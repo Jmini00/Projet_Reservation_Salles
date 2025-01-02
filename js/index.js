@@ -101,6 +101,14 @@ function deletedReservation(room, card)
 
                 // Retire la carte de la colonne de droite en la supprimant du DOM
                 card.remove()
+
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Attention',
+                    text: 'Réservation supprimée !!',
+                    showConfirmButton: false,
+                    timer: 2500
+                });
             }
         })
         .catch(error => console.error(error))
@@ -126,6 +134,7 @@ function reservedRoom(room)
         .then(data => {
             // En cas de succès...
             if (data.success) {
+                
                 // ...on modifie le bouton pour ne plus à avoir à réserver la salle
                 const button = document.querySelector(`#room-id-${room.id}`)
                 button.disabled = true
@@ -135,6 +144,14 @@ function reservedRoom(room)
                 // Ajoute une nouvelle carte dans la colonne de droite
                 const card = createRoomCard(room, false)
                 document.querySelector('#rooms-reserved').appendChild(card)
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Bravo',
+                    text: 'Réservation enregistrée !!',
+                    showConfirmButton: false,
+                    timer: 2500
+                });
             }
         })
         .catch(error => console.error(error))

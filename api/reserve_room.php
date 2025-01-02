@@ -20,8 +20,10 @@ if (!empty($room->roomId)) {
     $query->execute();
 
     echo json_encode([
-        'success' => true
+        'success' => true,
+        'message' => 'Salle réservée'
     ]);
+    
 } else {
     echo json_encode([
         'success' => false,
